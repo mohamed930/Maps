@@ -190,17 +190,4 @@ class HomeMapViewModel {
     }
     // ------------------------------------------------
     
-    
-    
-    // MARK:- TODO:- This Method For Add New Places to Database.
-    func AddShopsOperation() {
-        
-        let uid = UUID().uuidString
-        
-        let data = LocationModel(id: uid, shopName: "Advanced industek technical school", shopDescribtion: "This is nice place to learn technical skills", shopicon: baseIcon, long: 32.3232556, lati: 31.2440721)
-        
-        FirebaseLayer.shared.WriteMessageToFirebase(collectionName: locationCollection , ob: data, id: uid)
-    }
-    // ------------------------------------------------
-    
 }

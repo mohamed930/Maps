@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import FirebaseStorage
 
 class FirebaseLayer {
     
@@ -64,5 +65,55 @@ class FirebaseLayer {
         }
     }
     // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method for Upload Image.
+    // --------------------------------------------
+    public func uploadMedia(ImageFolder: String ,PickedImage:UIImage,completion: @escaping (_ url: String?) -> Void) {
+        
+       let StorageRef = Storage.storage().reference(forURL: baseImg)
+        let starsRef = StorageRef.child(ImageFolder)
+       var task: StorageUploadTask!
+        
+        if let uploadData = PickedImage.jpegData(compressionQuality: 0.5) {
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+            task = starsRef.putData(uploadData, metadata: metadata) { (metadata, error) in
+                
+                task.removeAllObservers()
+                
+                if error != nil {
+                    print("error \(error!.localizedDescription)")
+                    completion(nil)
+                } else {
+                    starsRef.downloadURL { (url, error) in
+                        if error != nil {
+                            print("error \(error!.localizedDescription)")
+                        }
+                        else {
+                            completion(url?.absoluteString)
+                        }
+                    }
+                }
+                
+            }
+            
+            
+            task.observe(.progress) { snapshot in
+                _ = snapshot.progress!.completedUnitCount / snapshot.progress!.totalUnitCount
+
+//                RappleActivityIndicatorView.setProgress(CGFloat(progress))
+                
+//                if CGFloat(progress) == 100 {
+//                    RappleActivityIndicatorView.stopAnimation(completionIndicator: .success, completionLabel: "Completed.", completionTimeout: 1.0)
+//                }
+                
+
+            }
+            
+        }
+        
+    }
+    // --------------------------------------------
     
 }
