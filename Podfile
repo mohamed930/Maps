@@ -14,6 +14,7 @@ target 'Maps' do
   pod 'Firebase/Storage'
   pod 'Kingfisher'
   pod 'FirebaseFirestoreSwift', '8.2.0-beta'
+  pod 'DropDown'
   
 
 end

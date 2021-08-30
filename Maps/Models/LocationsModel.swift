@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
 struct LocationModel: Codable {
     var id: String
     var shopName: String
     var shopDescribtion: String
     var shopicon: String
-    var long: String
-    var lati: String
+    var long: Double
+    var lati: Double
 }
