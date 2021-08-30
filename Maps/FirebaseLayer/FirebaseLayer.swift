@@ -50,4 +50,19 @@ class FirebaseLayer {
     }
     // ------------------------------------------------
     
+    
+    // MARK:- TODO:- This Method for Read Data from Firebase without condtion in public.
+    public func publicreadWithWhereCondtion (collectionName:String , k: String , v: String , complention: @escaping (QuerySnapshot? , Error?) -> ()) {
+        
+        Firestore.firestore().collection(collectionName).whereField(k, isEqualTo: v).getDocuments { (quary, error) in
+            if error != nil {
+                complention(nil,error!)
+            }
+            else {
+                complention(quary!,nil)
+            }
+        }
+    }
+    // ------------------------------------------------
+    
 }
