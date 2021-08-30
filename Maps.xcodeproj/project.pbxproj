@@ -9,21 +9,25 @@
 /* Begin PBXBuildFile section */
 		D340DD7A26DC840C00CCC966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD7926DC840C00CCC966 /* AppDelegate.swift */; };
 		D340DD7C26DC840C00CCC966 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD7B26DC840C00CCC966 /* SceneDelegate.swift */; };
-		D340DD7E26DC840C00CCC966 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD7D26DC840C00CCC966 /* ViewController.swift */; };
+		D340DD7E26DC840C00CCC966 /* HomeMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD7D26DC840C00CCC966 /* HomeMapViewController.swift */; };
 		D340DD8126DC840C00CCC966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D340DD7F26DC840C00CCC966 /* Main.storyboard */; };
 		D340DD8326DC841000CCC966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D340DD8226DC841000CCC966 /* Assets.xcassets */; };
 		D340DD8626DC841000CCC966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D340DD8426DC841000CCC966 /* LaunchScreen.storyboard */; };
+		D340DD9426DC853600CCC966 /* HomeMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD9326DC853600CCC966 /* HomeMapViewModel.swift */; };
+		D340DD9826DC85B900CCC966 /* LocationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340DD9726DC85B900CCC966 /* LocationsModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D340DD7626DC840C00CCC966 /* Maps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D340DD7926DC840C00CCC966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D340DD7B26DC840C00CCC966 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D340DD7D26DC840C00CCC966 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D340DD7D26DC840C00CCC966 /* HomeMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapViewController.swift; sourceTree = "<group>"; };
 		D340DD8026DC840C00CCC966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D340DD8226DC841000CCC966 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D340DD8526DC841000CCC966 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D340DD8726DC841000CCC966 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D340DD9326DC853600CCC966 /* HomeMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMapViewModel.swift; sourceTree = "<group>"; };
+		D340DD9726DC85B900CCC966 /* LocationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,81 @@
 		D340DD7826DC840C00CCC966 /* Maps */ = {
 			isa = PBXGroup;
 			children = (
-				D340DD7926DC840C00CCC966 /* AppDelegate.swift */,
-				D340DD7B26DC840C00CCC966 /* SceneDelegate.swift */,
-				D340DD7D26DC840C00CCC966 /* ViewController.swift */,
-				D340DD7F26DC840C00CCC966 /* Main.storyboard */,
-				D340DD8226DC841000CCC966 /* Assets.xcassets */,
-				D340DD8426DC841000CCC966 /* LaunchScreen.storyboard */,
-				D340DD8726DC841000CCC966 /* Info.plist */,
+				D340DD8D26DC842C00CCC966 /* AppDelegate */,
+				D340DD9126DC849800CCC966 /* Launch Screen */,
+				D340DD9626DC85A700CCC966 /* Models */,
+				D340DD8F26DC846400CCC966 /* Views + Controllers */,
+				D340DD9026DC847D00CCC966 /* Resources */,
 			);
 			path = Maps;
+			sourceTree = "<group>";
+		};
+		D340DD8D26DC842C00CCC966 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD7926DC840C00CCC966 /* AppDelegate.swift */,
+				D340DD7B26DC840C00CCC966 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		D340DD8F26DC846400CCC966 /* Views + Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD9226DC852100CCC966 /* Home ViewModel */,
+				D340DD9526DC853B00CCC966 /* Home ViewController */,
+				D340DD9926DC863D00CCC966 /* HomeMap View */,
+			);
+			path = "Views + Controllers";
+			sourceTree = "<group>";
+		};
+		D340DD9026DC847D00CCC966 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD8226DC841000CCC966 /* Assets.xcassets */,
+				D340DD8726DC841000CCC966 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D340DD9126DC849800CCC966 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD8426DC841000CCC966 /* LaunchScreen.storyboard */,
+			);
+			path = "Launch Screen";
+			sourceTree = "<group>";
+		};
+		D340DD9226DC852100CCC966 /* Home ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD9326DC853600CCC966 /* HomeMapViewModel.swift */,
+			);
+			path = "Home ViewModel";
+			sourceTree = "<group>";
+		};
+		D340DD9526DC853B00CCC966 /* Home ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD7D26DC840C00CCC966 /* HomeMapViewController.swift */,
+			);
+			path = "Home ViewController";
+			sourceTree = "<group>";
+		};
+		D340DD9626DC85A700CCC966 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD9726DC85B900CCC966 /* LocationsModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D340DD9926DC863D00CCC966 /* HomeMap View */ = {
+			isa = PBXGroup;
+			children = (
+				D340DD7F26DC840C00CCC966 /* Main.storyboard */,
+			);
+			path = "HomeMap View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +207,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D340DD7E26DC840C00CCC966 /* ViewController.swift in Sources */,
+				D340DD9826DC85B900CCC966 /* LocationsModel.swift in Sources */,
+				D340DD9426DC853600CCC966 /* HomeMapViewModel.swift in Sources */,
+				D340DD7E26DC840C00CCC966 /* HomeMapViewController.swift in Sources */,
 				D340DD7A26DC840C00CCC966 /* AppDelegate.swift in Sources */,
 				D340DD7C26DC840C00CCC966 /* SceneDelegate.swift in Sources */,
 			);
@@ -288,7 +360,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4YZSY77G5;
-				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Maps/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,7 +369,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.Maps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -307,7 +380,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X4YZSY77G5;
-				INFOPLIST_FILE = Maps/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Maps/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -315,7 +389,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.myorganization199.Maps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
