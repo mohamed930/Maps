@@ -310,7 +310,23 @@
 		D39D384726DD7D9600ED1374 /* MapPicked ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D39D384E26DDA3E200ED1374 /* MapPicked ViewModel */,
+				D39D384F26DDA3F100ED1374 /* MapPicked ViewController */,
+			);
+			path = "MapPicked ViewController";
+			sourceTree = "<group>";
+		};
+		D39D384E26DDA3E200ED1374 /* MapPicked ViewModel */ = {
+			isa = PBXGroup;
+			children = (
 				D39D384A26DD8BC400ED1374 /* MapPickedViewModel.swift */,
+			);
+			path = "MapPicked ViewModel";
+			sourceTree = "<group>";
+		};
+		D39D384F26DDA3F100ED1374 /* MapPicked ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				D39D384826DD7DDA00ED1374 /* MapPickedViewController.swift */,
 				D39D384C26DD8F7800ED1374 /* MapPickedGMSMapViewDelegate.swift */,
 			);

@@ -25,6 +25,34 @@ class AddPlaceViewModel {
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- Make Validation Oberval here.
+    var isShopNameBehaviour : Observable<Bool> {
+        return ShopNameBehaviour.asObservable().map { shopname -> Bool in
+            let isnameEmpty = shopname.trimmingCharacters(in: .whitespaces).isEmpty
+            
+            return isnameEmpty
+        }
+    }
+    
+    var isShopDetailsBehaviour : Observable<Bool> {
+        return ShopDetailsBehaviour.asObservable().map { shopdetails -> Bool in
+            let isdetailsEmpty = shopdetails.trimmingCharacters(in: .whitespaces).isEmpty
+            
+            return isdetailsEmpty
+        }
+    }
+    
+    var isNextButtonEnabled: Observable<Bool> {
+        return Observable.combineLatest(isShopNameBehaviour,isShopDetailsBehaviour) {
+            emailEmpty , passwordEmpty in
+            let loginValid = !emailEmpty && !passwordEmpty
+            
+            return loginValid
+        }
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- Set Map API Key
     private func setApiKEY() {
         GMSServices.provideAPIKey(apiKey)

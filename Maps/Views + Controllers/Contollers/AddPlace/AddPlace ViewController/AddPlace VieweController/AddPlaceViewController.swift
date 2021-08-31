@@ -40,6 +40,7 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
         ConfigureProgress()
         
         ConfigureNextButton()
+        SubscribeisButtonNextEnabled()
         SubscriebToNextButtonAction()
         
         AddTapGeusterToImageView()
@@ -75,6 +76,24 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Active Button Next or not.
+    func SubscribeisButtonNextEnabled() {
+        addplaceviewmodel.isNextButtonEnabled.subscribe(onNext: { [weak self] isEnabled in
+            
+            guard let self = self else { return }
+            
+            if isEnabled {
+                self.NextButton.isEnabled = true
+            }
+            else {
+                self.NextButton.isEnabled = false
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    
     // MARK:- TODO:- This method For Adding Action To NextButton.
     func SubscriebToNextButtonAction() {
         NextButton.rx.tap
@@ -98,6 +117,8 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
                 nextvc.mappickedviewmodel.ShopNameBehaviour.accept(self.addplaceviewmodel.ShopNameBehaviour.value)
                 nextvc.mappickedviewmodel.ShopDetailsBehaviour.accept(self.addplaceviewmodel.ShopDetailsBehaviour.value)
                 nextvc.mappickedviewmodel.ShopIconBehaviour.accept(self.addplaceviewmodel.ShopIconBehaviour.value)
+                nextvc.mappickedviewmodel.longBehaviour.accept(0.0)
+                nextvc.mappickedviewmodel.latiBehaviour.accept(0.0)
                 
                 self.navigationController?.pushViewController(nextvc, animated: true)
             }).disposed(by: disposebag)

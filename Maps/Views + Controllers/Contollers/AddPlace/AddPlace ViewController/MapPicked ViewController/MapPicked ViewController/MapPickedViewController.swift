@@ -31,6 +31,8 @@ class MapPickedViewController: UIViewController {
         
         ConfigureProgress()
         
+        subscribeToisEnabledFinishButton()
+        responseToWriteShop()
         SubscribeToFinishAction()
         ConfigureFinishButton()
     }
@@ -93,6 +95,37 @@ class MapPickedViewController: UIViewController {
     // ------------------------------------------------
     
     
+    func subscribeToisEnabledFinishButton() {
+        mappickedviewmodel.isFinishButtonEnabled.subscribe(onNext: { [weak self] isnotEmpty in
+            
+            guard let self = self else { return }
+            
+            if isnotEmpty {
+                self.finishButton.isEnabled = true
+            }
+            else {
+                self.finishButton.isEnabled = false
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    
+    func responseToWriteShop() {
+        mappickedviewmodel.responseBehaviour.subscribe(onNext: { [weak self] response in
+            
+            guard let self = self else { return }
+            
+            if response {
+                let story = self.storyboard?.instantiateViewController(withIdentifier: "DoneButton")
+                
+                story?.modalPresentationStyle = .fullScreen
+                
+                self.present(story!, animated: true)
+            }
+            
+        }).disposed(by: disposebag)
+    }
+    
     // MARK:- TODO:- This Method For Configure the Finish Button Action.
     func SubscribeToFinishAction() {
         
@@ -102,6 +135,7 @@ class MapPickedViewController: UIViewController {
             
             guard let self = self else { return }
             
+                self.finishButton.isEnabled = false
                 self.mappickedviewmodel.AddShopsOperation()
             
         }).disposed(by: disposebag)
