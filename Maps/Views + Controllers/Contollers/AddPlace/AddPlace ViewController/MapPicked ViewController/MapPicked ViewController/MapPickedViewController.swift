@@ -50,8 +50,10 @@ class MapPickedViewController: UIViewController {
     func ConfigureNavigationBar() {
         
         self.navigationItem.title = "Shop located details"
-         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Icons-icon-long-arrow-left")?.withTintColor(.white), style: .plain, target: self, action: #selector(self.BackButtonPressed))
+        
+        let image : UIImage? = UIImage.init(named: "Icons-icon-long-arrow-left")!.withRenderingMode(.alwaysOriginal)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .plain , target: self, action: #selector(self.BackButtonPressed))
         
     }
     
