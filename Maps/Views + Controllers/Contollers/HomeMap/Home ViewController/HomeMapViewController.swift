@@ -97,12 +97,22 @@ class HomeMapViewController: UIViewController {
             
             guard let self = self else { return }
             
+            if index == 0 {
+                self.SearchTextField.text = item
+                self.homemapviewmodel.ShowAllLocationOperation(view: self.GoogleMapView, long: 32.3123, latit: 31.2563, zoom: 13)
+                self.SearchTextField.resignFirstResponder()
+                self.dropdown.hide()
+            }
+            else {
+                self.SearchTextField.text = item
+                self.homemapviewmodel.PickedNameBehaviour.accept(item)
+                self.homemapviewmodel.SearchPlaceOperation(View: self.GoogleMapView)
+                self.SearchTextField.resignFirstResponder()
+                self.dropdown.hide()
+            }
+            
             print("Selected item: \(item) at index: \(index)")
-            self.SearchTextField.text = item
-            self.homemapviewmodel.PickedNameBehaviour.accept(item)
-            self.homemapviewmodel.SearchPlaceOperation(View: self.GoogleMapView)
-            self.SearchTextField.resignFirstResponder()
-            self.dropdown.hide()
+            
         }
         
     }
@@ -112,6 +122,7 @@ class HomeMapViewController: UIViewController {
     // MARK:- TODO:- This Method For Configure Datasource for DropDown Menu.
     func ConfigureDataSource() {
         var names = Array<String>()
+        names.append("all")
         
         for i in self.homemapviewmodel.namesBehaviour.value {
             names.append(i.shopName)

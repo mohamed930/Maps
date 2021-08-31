@@ -190,4 +190,58 @@ class HomeMapViewModel {
     }
     // ------------------------------------------------
     
+    
+    
+    // MARK:- TODO:- When User Selected All Locations Show it in the map.
+    func ShowAllLocationOperation(view: UIView,long: Double, latit: Double,zoom: Float) {
+        
+        CreateAnnotations(view: view, long: long, latit: latit, zoom: zoom, Arr: namesBehaviour.value)
+        
+    }
+    
+    
+    func CreateAnnotations (view: UIView,long: Double, latit: Double,zoom: Float,Arr: [LocationModel]) {
+            
+        setApiKEY()
+        
+        // Creates a marker in the center of the map.
+        camera = GMSCameraPosition.camera(withLatitude: latit, longitude: long, zoom: zoom)
+        mapView = GMSMapView.map(withFrame: view.frame, camera: camera!)
+        var bounds = GMSCoordinateBounds()
+        
+        for i in Arr {
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: i.lati , longitude: i.long)
+            marker.title = i.shopName
+            marker.snippet = i.shopDescribtion
+            
+            DispatchQueue.main.async {
+                
+                let resource = ImageResource(downloadURL: URL(string: i.shopicon)!)
+                
+                KingfisherManager.shared.retrieveImage(with: resource) { result in
+                    switch result {
+                    
+                    case .success(let value):
+                        marker.icon = value.image.imageWithSize(scaledToSize: CGSize(width: 45, height: 45))
+                    case .failure(let error):
+                        print("Error: \(error)")
+                    }
+                }
+                
+            }
+            
+            marker.map = mapView
+            bounds = bounds.includingCoordinate(marker.position)
+        }
+        
+        let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
+        mapView!.animate(with: update)
+        
+        mapView?.frame = view.bounds
+        mapView!.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        view.addSubview(mapView!)
+        
+    }
+    
 }
