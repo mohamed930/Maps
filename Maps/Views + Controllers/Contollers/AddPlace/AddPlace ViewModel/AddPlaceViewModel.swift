@@ -18,6 +18,9 @@ class AddPlaceViewModel {
     var longBehaviour = BehaviorRelay<Double>(value: 0.0)
     var latiBehaviour = BehaviorRelay<Double>(value: 0.0)
     
+    var CatagoryBehaviour = BehaviorRelay<[String]>(value: [])
+    var PickedCatagoryBehaviour = BehaviorRelay<String>(value: "")
+    
     // MARK:- TODO:- Initialise map varibles.
     let apiKey = "AIzaSyBBj9ciIrTveza-147dJ81OcCGvsSYrPfo"
     var mapView:GMSMapView?
@@ -73,6 +76,13 @@ class AddPlaceViewModel {
         mapView!.frame = view.bounds
         mapView!.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         view.addSubview(mapView!)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Fill Catagory Array.
+    func LoadCatagoryOperation() {
+        CatagoryBehaviour.accept(CatagoryArr)
     }
     // ------------------------------------------------
     

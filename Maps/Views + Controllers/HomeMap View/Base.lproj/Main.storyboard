@@ -22,8 +22,20 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-eK-RQX">
-                                <rect key="frame" x="8" y="54" width="359" height="50"/>
+                            <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2wa-DN-0pE">
+                                <rect key="frame" x="224" y="54" width="146" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="YBy-UU-nmo"/>
+                                    <constraint firstAttribute="width" constant="146" id="lzr-l7-Hj9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="MJb-eh-0ae"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dEL-eK-RQX">
+                                <rect key="frame" x="8" y="54" width="208" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wMX-o4-cqJ"/>
                                 </constraints>
@@ -40,15 +52,18 @@
                         <constraints>
                             <constraint firstItem="dEL-eK-RQX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="1jk-3V-t4c"/>
                             <constraint firstItem="dEL-eK-RQX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="6Q0-U3-Csg"/>
+                            <constraint firstItem="2wa-DN-0pE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="6WS-ni-bD8"/>
                             <constraint firstItem="m6k-XX-om5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="T2w-Ts-tVZ"/>
                             <constraint firstItem="m6k-XX-om5" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Uhv-Gw-m6U"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dEL-eK-RQX" secondAttribute="trailing" constant="8" id="cHN-kM-9vI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2wa-DN-0pE" secondAttribute="trailing" constant="5" id="aG7-iq-fTP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="m6k-XX-om5" secondAttribute="trailing" id="eN9-Zs-Zcz"/>
+                            <constraint firstItem="2wa-DN-0pE" firstAttribute="leading" secondItem="dEL-eK-RQX" secondAttribute="trailing" constant="8" symbolic="YES" id="gd6-1t-jNT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="m6k-XX-om5" secondAttribute="bottom" id="h1E-wx-ZUs"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Locations" image="location.fill" catalog="system" id="ygD-qY-Z4x"/>
                     <connections>
+                        <outlet property="CatagoryTextField" destination="2wa-DN-0pE" id="Ffk-m9-sjS"/>
                         <outlet property="GoogleMapView" destination="m6k-XX-om5" id="Xyc-rT-PTj"/>
                         <outlet property="SearchTextField" destination="dEL-eK-RQX" id="hhg-Ey-1vk"/>
                     </connections>
@@ -199,8 +214,8 @@
                                     <color key="titleColor" name="Buttoncolour"/>
                                 </state>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="s1P-vB-8IQ">
-                                <rect key="frame" x="16" y="415" width="343" height="59.333333333333314"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s1P-vB-8IQ">
+                                <rect key="frame" x="16" y="415" width="343" height="98"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="UBy-vN-TTD">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="25.666666666666668"/>
@@ -229,7 +244,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Atq-m5-5VB">
-                                        <rect key="frame" x="0.0" y="33.666666666666686" width="343" height="25.666666666666671"/>
+                                        <rect key="frame" x="0.0" y="35.666666666666686" width="343" height="25.666666666666671"/>
                                         <subviews>
                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJv-zn-7V4">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
@@ -240,7 +255,7 @@
                                             <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop details" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="305-ZM-9S3">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="18.666666666666668"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="UJZ-7J-Kzc" id="TsF-ko-bkT"/>
                                                 </connections>
@@ -250,6 +265,32 @@
                                                 <color key="backgroundColor" red="0.2627450980392157" green="0.2627450980392157" blue="0.2627450980392157" alpha="0.66717155612244894" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="sIy-sH-zX3"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="A9A-HK-ing">
+                                        <rect key="frame" x="0.0" y="71.333333333333314" width="343" height="26.666666666666671"/>
+                                        <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Catagory" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qz-29-oCv">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="0.0"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" systemColor="systemGrayColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shop Catagory" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Oy-ag-ymM">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="18.666666666666668"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="UJZ-7J-Kzc" id="fC2-Dy-CEP"/>
+                                                </connections>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pi0-Zl-obV">
+                                                <rect key="frame" x="0.0" y="25.666666666666686" width="343" height="1"/>
+                                                <color key="backgroundColor" red="0.26274509800000001" green="0.26274509800000001" blue="0.26274509800000001" alpha="0.66717155610000001" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="VIN-9v-QzT"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -298,12 +339,15 @@
                     </view>
                     <navigationItem key="navigationItem" title="Shop named details " id="Ed2-z9-8vJ"/>
                     <connections>
+                        <outlet property="CatagoryLabel" destination="8qz-29-oCv" id="zDl-z8-7aj"/>
+                        <outlet property="CatagoryTextField" destination="4Oy-ag-ymM" id="e1D-vi-Smj"/>
                         <outlet property="Circle1" destination="sT1-PN-gEV" id="hxh-zp-lgJ"/>
                         <outlet property="Circle2" destination="WNs-hu-cLc" id="zAj-Yn-fF3"/>
                         <outlet property="Circle3" destination="Bik-Xh-xdo" id="0fD-2k-ejr"/>
                         <outlet property="Circle4" destination="Ldz-Kk-tfs" id="AT3-BO-6sE"/>
                         <outlet property="Line1" destination="vMQ-PV-W3o" id="w43-dc-cHE"/>
                         <outlet property="Line2" destination="q4b-xX-CrT" id="eab-e4-VOQ"/>
+                        <outlet property="Line3" destination="Pi0-Zl-obV" id="lsu-DY-eLx"/>
                         <outlet property="NextButton" destination="gWE-lG-jFD" id="khq-sF-bDY"/>
                         <outlet property="PickImageButton" destination="CIE-WS-Umf" id="gU8-2R-Ou0"/>
                         <outlet property="ShopDetailsLabel" destination="WJv-zn-7V4" id="pen-q8-lhC"/>
@@ -611,6 +655,9 @@ Try to see it now</string>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

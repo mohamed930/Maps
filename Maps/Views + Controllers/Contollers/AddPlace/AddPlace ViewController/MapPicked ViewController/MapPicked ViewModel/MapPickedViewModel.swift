@@ -59,7 +59,7 @@ class MapPickedViewModel : AddPlaceViewModel {
             guard let self = self else { return }
             guard let url = url else { return }
             
-            let data = LocationModel(id: uid, shopName: self.ShopNameBehaviour.value , shopDescribtion: self.ShopDetailsBehaviour.value , shopicon: url, long: self.longBehaviour.value , lati: self.latiBehaviour.value)
+            let data = LocationModel(id: uid, shopName: self.ShopNameBehaviour.value , shopDescribtion: self.ShopDetailsBehaviour.value, shopCatagory: self.PickedCatagoryBehaviour.value , shopicon: url, long: self.longBehaviour.value , lati: self.latiBehaviour.value)
             
             FirebaseLayer.shared.WriteMessageToFirebase(collectionName: locationCollection , ob: data, id: uid)
             

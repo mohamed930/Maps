@@ -20,6 +20,10 @@ class HomeMapViewModel {
     let BackupBehaviour = BehaviorRelay<[LocationModel]>(value: [])
     
     let PickedNameBehaviour = BehaviorRelay<String>(value: "")
+    
+    let CatagoryArrBehaviour = BehaviorRelay<[String]>(value: [])
+    let PickedCatagoryBehaviour = BehaviorRelay<String>(value: "")
+    
     let disposebag = DisposeBag()
     // ------------------------------------------------
     
@@ -243,5 +247,11 @@ class HomeMapViewModel {
         view.addSubview(mapView!)
         
     }
+    
+    // MARK:- TODO:- This Method For Fill Catagory.
+    func FillCatagoryOperation() {
+        CatagoryArrBehaviour.accept(CatagoryArr)
+    }
+    // ------------------------------------------------
     
 }

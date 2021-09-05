@@ -25,11 +25,15 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
     @IBOutlet weak var ShopDetailsTextField: UITextField!
     @IBOutlet weak var PickImageButton: UIButton!
     @IBOutlet weak var ShopIconImageView: UIImageView!
+    @IBOutlet weak var CatagoryTextField: UITextField!
+    @IBOutlet weak var CatagoryLabel: UILabel!
+    @IBOutlet weak var Line3: UIView!
     
     // MARK:- TODO:- Intialise New varibles here.
     var addplaceviewmodel = AddPlaceViewModel()
     var imagePicker = UIImagePickerController()
     var img: UIImage?
+    var picker: UIPickerView!
     var disposebag = DisposeBag()
 
     override func viewDidLoad() {
@@ -48,6 +52,8 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
         ConfigureShopIconImage()
         SubscribeToPickImageFromUser()
         
+        LoadCatagory()
+        
     }
     
     // MARK:- TODO:- Bind TextField To his rxSwift varibles.
@@ -56,6 +62,7 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
         ShopDetailsTextField.rx.text.orEmpty.bind(to: addplaceviewmodel.ShopDetailsBehaviour).disposed(by: disposebag)
     }
     // ------------------------------------------------
+    
     
     // MARK:- TODO:- This Method For Configure the View Cricle.
     func ConfigureProgress() {
@@ -119,6 +126,7 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
                 nextvc.mappickedviewmodel.ShopIconBehaviour.accept(self.addplaceviewmodel.ShopIconBehaviour.value)
                 nextvc.mappickedviewmodel.longBehaviour.accept(0.0)
                 nextvc.mappickedviewmodel.latiBehaviour.accept(0.0)
+                nextvc.mappickedviewmodel.PickedCatagoryBehaviour.accept(self.addplaceviewmodel.PickedCatagoryBehaviour.value)
                 
                 self.navigationController?.pushViewController(nextvc, animated: true)
             }).disposed(by: disposebag)
@@ -189,11 +197,21 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Load Data from Array.
+    func LoadCatagory() {
+        addplaceviewmodel.LoadCatagoryOperation()
+    }
+    // ------------------------------------------------
+    
+    
+    
     // MARK:- TODO:- When touch any where dismiss keypad.
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         Line2.layer.backgroundColor = UIColor().hexStringToUIColor(hex: "#434343").cgColor
         Line1.layer.backgroundColor = UIColor().hexStringToUIColor(hex: "#434343").cgColor
+        Line3.layer.backgroundColor = UIColor().hexStringToUIColor(hex: "#434343").cgColor
     }
+    // ------------------------------------------------
     
 }

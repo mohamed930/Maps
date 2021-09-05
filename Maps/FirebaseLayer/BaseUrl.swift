@@ -14,6 +14,8 @@ let baseImg = "gs://maps-c06cd.appspot.com"
 
 let KShopName = "shopName"
 
+let CatagoryArr = ["Resturant", "Coffe Shop", "Library", "Schools" , "Police"]
+
 
 let buttonBackGround = "#F3F1EF"
 let buttonBorderColour = "#EA466C"

@@ -14,6 +14,7 @@ class HomeMapViewController: UIViewController {
     
     // MARK:- TODO:- Initialise IBOutlets here
     @IBOutlet weak var SearchTextField: UITextField!
+    @IBOutlet weak var CatagoryTextField: UITextField!
     @IBOutlet weak var GoogleMapView: UIView!
     // ------------------------------------------------
     
@@ -22,10 +23,13 @@ class HomeMapViewController: UIViewController {
     let homemapviewmodel = HomeMapViewModel()
     let disposebag = DisposeBag()
     let dropdown = DropDown()
+    var picker: UIPickerView! = nil
     // ------------------------------------------------
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dropdown.hide()
         
         ConfigureTextField()
         SubscribeToSearchTextField()
@@ -34,6 +38,8 @@ class HomeMapViewController: UIViewController {
         SetGoogleMapInit()
         
         GetNames()
+        
+        GetCatagory()
     }
     
     // MARK:- TODO:- This Method For check is SearchTextField is Empty or not to filter array and disable return button.
@@ -63,6 +69,7 @@ class HomeMapViewController: UIViewController {
     
     // MARK:- TODO:- This method for configure the textfield.
     func ConfigureTextField() {
+        CatagoryTextField.SetCornerRadious(paddingValue: 0, PlaceHolder: "Enter Catagory", Color: UIColor.darkGray)
         SearchTextField.SetCornerRadious(paddingValue: 20, PlaceHolder: "Enter Place you wanna search into it", Color: UIColor.darkGray)
     }
     // ------------------------------------------------
@@ -143,5 +150,10 @@ class HomeMapViewController: UIViewController {
         }
     }
     // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Full Catagory.
+    func GetCatagory() {
+        homemapviewmodel.FillCatagoryOperation()
+    }
 }
 
