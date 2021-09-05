@@ -79,6 +79,7 @@ extension AddPlaceViewController: UITextFieldDelegate {
         // Load picker and return from here.
         picker = UIPickerView()
         picker.backgroundColor = UIColor.white
+        picker.setValue(UIColor.black, forKeyPath: "textColor")
         
         BindPickerViewToRxSwift()
 

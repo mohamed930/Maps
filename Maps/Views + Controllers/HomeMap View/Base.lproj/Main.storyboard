@@ -28,6 +28,7 @@
                                     <constraint firstAttribute="height" constant="52" id="YBy-UU-nmo"/>
                                     <constraint firstAttribute="width" constant="146" id="lzr-l7-Hj9"/>
                                 </constraints>
+                                <color key="textColor" name="TextColour"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>

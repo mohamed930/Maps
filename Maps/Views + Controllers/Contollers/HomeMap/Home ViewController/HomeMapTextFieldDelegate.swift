@@ -47,6 +47,7 @@ extension HomeMapViewController: UITextFieldDelegate {
         // Load picker and return from here.
         picker = UIPickerView()
         picker.backgroundColor = UIColor.white
+        picker.setValue(UIColor.black, forKeyPath: "textColor")
         
         BindPickerViewToRxSwift()
 
@@ -104,6 +105,15 @@ extension HomeMapViewController: UITextFieldDelegate {
         
         // Load All Places With This Catagory.
         CatagoryTextField.text = homemapviewmodel.PickedCatagoryBehaviour.value
+        
+        if homemapviewmodel.PickedCatagoryBehaviour.value == "All" {
+            homemapviewmodel.ShowAllLocationOperation(view: self.GoogleMapView, long: 32.3123, latit: 31.2563, zoom: 13)
+        }
+        else {
+            homemapviewmodel.FilterAndShowPlacesOperation(view: GoogleMapView)
+            self.ConfigureDataSource()
+        }
+        
         
         // Dismiss Keypad after Complete.
         CatagoryTextField.resignFirstResponder()

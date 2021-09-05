@@ -198,12 +198,11 @@ class HomeMapViewModel {
     
     // MARK:- TODO:- When User Selected All Locations Show it in the map.
     func ShowAllLocationOperation(view: UIView,long: Double, latit: Double,zoom: Float) {
-        
         CreateAnnotations(view: view, long: long, latit: latit, zoom: zoom, Arr: namesBehaviour.value)
-        
     }
     
     
+    // MARK:- TODO:- This Method For Create Anotations on Map.
     func CreateAnnotations (view: UIView,long: Double, latit: Double,zoom: Float,Arr: [LocationModel]) {
             
         setApiKEY()
@@ -247,10 +246,39 @@ class HomeMapViewModel {
         view.addSubview(mapView!)
         
     }
+    // ------------------------------------------------
+    
+    
     
     // MARK:- TODO:- This Method For Fill Catagory.
     func FillCatagoryOperation() {
-        CatagoryArrBehaviour.accept(CatagoryArr)
+        var arr = CatagoryArr
+        arr.insert("All", at: 0)
+        CatagoryArrBehaviour.accept(arr)
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Filter the array and show the Catagory.
+    func FilterAndShowPlacesOperation(view: UIView) {
+        let arr = BackupBehaviour.value
+        var places = Array<LocationModel>()
+        
+        for i in arr {
+            if i.shopCatagory == PickedCatagoryBehaviour.value {
+                places.append(i)
+            }
+        }
+        
+        CreateAnnotations(view: view, long: 32.32300485798224, latit: 31.240869849496217, zoom: 13, Arr: places)
+        
+        if places.count >= 1 {
+            namesBehaviour.accept(places)
+        }
+        else {
+            namesBehaviour.accept(BackupBehaviour.value)
+        }
+        
     }
     // ------------------------------------------------
     
