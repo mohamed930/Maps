@@ -35,6 +35,10 @@
 		D39D384926DD7DDA00ED1374 /* MapPickedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D384826DD7DDA00ED1374 /* MapPickedViewController.swift */; };
 		D39D384B26DD8BC400ED1374 /* MapPickedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D384A26DD8BC400ED1374 /* MapPickedViewModel.swift */; };
 		D39D384D26DD8F7800ED1374 /* MapPickedGMSMapViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D384C26DD8F7800ED1374 /* MapPickedGMSMapViewDelegate.swift */; };
+		D39D74E626FE6A98002FC2EA /* AddPlace.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D39D74E526FE6A98002FC2EA /* AddPlace.storyboard */; };
+		D39D74EC26FE6BDC002FC2EA /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D74EB26FE6BDC002FC2EA /* LoginViewModel.swift */; };
+		D39D74EF26FE6C1E002FC2EA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D74EE26FE6C1E002FC2EA /* LoginViewController.swift */; };
+		D39D74F226FE7915002FC2EA /* LoginTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39D74F126FE7915002FC2EA /* LoginTextFieldDelegate.swift */; };
 		D5F63A476786B9F4346152A6 /* Pods_Maps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436C27C3B727AF4B795BFBA2 /* Pods_Maps.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +76,10 @@
 		D39D384826DD7DDA00ED1374 /* MapPickedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickedViewController.swift; sourceTree = "<group>"; };
 		D39D384A26DD8BC400ED1374 /* MapPickedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickedViewModel.swift; sourceTree = "<group>"; };
 		D39D384C26DD8F7800ED1374 /* MapPickedGMSMapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPickedGMSMapViewDelegate.swift; sourceTree = "<group>"; };
+		D39D74E526FE6A98002FC2EA /* AddPlace.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddPlace.storyboard; sourceTree = "<group>"; };
+		D39D74EB26FE6BDC002FC2EA /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		D39D74EE26FE6C1E002FC2EA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D39D74F126FE7915002FC2EA /* LoginTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +138,7 @@
 			children = (
 				D31126FD26DCC594006250EC /* HomeMap */,
 				D31126FE26DCC5A5006250EC /* DirectionMap */,
-				D39D383726DD65DB00ED1374 /* AddPlace */,
+				D39D74E926FE6B8D002FC2EA /* LoginView */,
 			);
 			path = Contollers;
 			sourceTree = "<group>";
@@ -197,7 +205,8 @@
 				D31126EE26DC9066006250EC /* Extensions */,
 				D31126F526DCA1AD006250EC /* FirebaseLayer */,
 				D340DD9626DC85A700CCC966 /* Models */,
-				D340DD8F26DC846400CCC966 /* Views + Controllers */,
+				D340DD8F26DC846400CCC966 /* LocationsViews + Controllers */,
+				D39D74E426FE6A77002FC2EA /* Add PlaceViews + Controllers */,
 				D340DD9026DC847D00CCC966 /* Resources */,
 			);
 			path = Maps;
@@ -212,13 +221,13 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		D340DD8F26DC846400CCC966 /* Views + Controllers */ = {
+		D340DD8F26DC846400CCC966 /* LocationsViews + Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D31126FC26DCC58B006250EC /* Contollers */,
 				D340DD9926DC863D00CCC966 /* HomeMap View */,
 			);
-			path = "Views + Controllers";
+			path = "LocationsViews + Controllers";
 			sourceTree = "<group>";
 		};
 		D340DD9026DC847D00CCC966 /* Resources */ = {
@@ -272,15 +281,6 @@
 			path = "HomeMap View";
 			sourceTree = "<group>";
 		};
-		D39D383726DD65DB00ED1374 /* AddPlace */ = {
-			isa = PBXGroup;
-			children = (
-				D39D383A26DD65F800ED1374 /* AddPlace ViewModel */,
-				D39D383D26DD660C00ED1374 /* AddPlace ViewController */,
-			);
-			path = AddPlace;
-			sourceTree = "<group>";
-		};
 		D39D383A26DD65F800ED1374 /* AddPlace ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,28 +292,19 @@
 		D39D383D26DD660C00ED1374 /* AddPlace ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D39D384626DD7D8400ED1374 /* AddPlace VieweController */,
-				D39D384726DD7D9600ED1374 /* MapPicked ViewController */,
+				D39D383E26DD662A00ED1374 /* AddPlaceViewController.swift */,
+				D39D384426DD709D00ED1374 /* AddPlaceTextFieldDelegate.swift */,
 			);
 			path = "AddPlace ViewController";
 			sourceTree = "<group>";
 		};
-		D39D384626DD7D8400ED1374 /* AddPlace VieweController */ = {
-			isa = PBXGroup;
-			children = (
-				D39D383E26DD662A00ED1374 /* AddPlaceViewController.swift */,
-				D39D384426DD709D00ED1374 /* AddPlaceTextFieldDelegate.swift */,
-			);
-			path = "AddPlace VieweController";
-			sourceTree = "<group>";
-		};
-		D39D384726DD7D9600ED1374 /* MapPicked ViewController */ = {
+		D39D384726DD7D9600ED1374 /* MapPicked */ = {
 			isa = PBXGroup;
 			children = (
 				D39D384E26DDA3E200ED1374 /* MapPicked ViewModel */,
 				D39D384F26DDA3F100ED1374 /* MapPicked ViewController */,
 			);
-			path = "MapPicked ViewController";
+			path = MapPicked;
 			sourceTree = "<group>";
 		};
 		D39D384E26DDA3E200ED1374 /* MapPicked ViewModel */ = {
@@ -331,6 +322,67 @@
 				D39D384C26DD8F7800ED1374 /* MapPickedGMSMapViewDelegate.swift */,
 			);
 			path = "MapPicked ViewController";
+			sourceTree = "<group>";
+		};
+		D39D74E426FE6A77002FC2EA /* Add PlaceViews + Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74F026FE6CE8002FC2EA /* Controllers */,
+				D39D74E726FE6ADA002FC2EA /* AddPlace View */,
+			);
+			path = "Add PlaceViews + Controllers";
+			sourceTree = "<group>";
+		};
+		D39D74E726FE6ADA002FC2EA /* AddPlace View */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74E526FE6A98002FC2EA /* AddPlace.storyboard */,
+			);
+			path = "AddPlace View";
+			sourceTree = "<group>";
+		};
+		D39D74E826FE6AE5002FC2EA /* AddPlace */ = {
+			isa = PBXGroup;
+			children = (
+				D39D383A26DD65F800ED1374 /* AddPlace ViewModel */,
+				D39D383D26DD660C00ED1374 /* AddPlace ViewController */,
+			);
+			path = AddPlace;
+			sourceTree = "<group>";
+		};
+		D39D74E926FE6B8D002FC2EA /* LoginView */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74EA26FE6BC5002FC2EA /* Login ViewModel */,
+				D39D74ED26FE6BFF002FC2EA /* Login ViewController */,
+			);
+			path = LoginView;
+			sourceTree = "<group>";
+		};
+		D39D74EA26FE6BC5002FC2EA /* Login ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74EB26FE6BDC002FC2EA /* LoginViewModel.swift */,
+			);
+			path = "Login ViewModel";
+			sourceTree = "<group>";
+		};
+		D39D74ED26FE6BFF002FC2EA /* Login ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74EE26FE6C1E002FC2EA /* LoginViewController.swift */,
+				D39D74F126FE7915002FC2EA /* LoginTextFieldDelegate.swift */,
+			);
+			path = "Login ViewController";
+			sourceTree = "<group>";
+		};
+		D39D74F026FE6CE8002FC2EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D39D74E826FE6AE5002FC2EA /* AddPlace */,
+				D39D384726DD7D9600ED1374 /* MapPicked */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +447,7 @@
 			files = (
 				D340DD8626DC841000CCC966 /* LaunchScreen.storyboard in Resources */,
 				D31126ED26DC8F3C006250EC /* GoogleService-Info.plist in Resources */,
+				D39D74E626FE6A98002FC2EA /* AddPlace.storyboard in Resources */,
 				D340DD8326DC841000CCC966 /* Assets.xcassets in Resources */,
 				D340DD8126DC840C00CCC966 /* Main.storyboard in Resources */,
 			);
@@ -479,16 +532,19 @@
 				D31126F926DCA2E2006250EC /* BaseUrl.swift in Sources */,
 				D31126F726DCA1C1006250EC /* FirebaseLayer.swift in Sources */,
 				D340DD7A26DC840C00CCC966 /* AppDelegate.swift in Sources */,
+				D39D74EC26FE6BDC002FC2EA /* LoginViewModel.swift in Sources */,
 				D311270426DCC5FB006250EC /* DirectionViewController.swift in Sources */,
 				D39D383426DD64E000ED1374 /* UIView.swift in Sources */,
 				D39D383F26DD662A00ED1374 /* AddPlaceViewController.swift in Sources */,
 				D39D384526DD709D00ED1374 /* AddPlaceTextFieldDelegate.swift in Sources */,
 				D39D384926DD7DDA00ED1374 /* MapPickedViewController.swift in Sources */,
+				D39D74F226FE7915002FC2EA /* LoginTextFieldDelegate.swift in Sources */,
 				D39D384326DD706B00ED1374 /* UIViewController.swift in Sources */,
 				D311270026DCC5C1006250EC /* DirectionViewModel.swift in Sources */,
 				D39D383926DD65F400ED1374 /* AddPlaceViewModel.swift in Sources */,
 				D340DD7C26DC840C00CCC966 /* SceneDelegate.swift in Sources */,
 				D31126F026DC9080006250EC /* UITextField.swift in Sources */,
+				D39D74EF26FE6C1E002FC2EA /* LoginViewController.swift in Sources */,
 				D311270626DCCB77006250EC /* DirectionTextFieldDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
