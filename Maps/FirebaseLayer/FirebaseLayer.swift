@@ -18,7 +18,31 @@ class FirebaseLayer {
         return Firestore.firestore().collection(collectionName)
     }
     
-    // MARK:- TODO:- This Method For Write Message into Firebae
+    // MARK:- TODO:- This Method For Lgin into Firebase
+    public func LoginOperation (email: String, password: String, completion: @escaping (Error?,AuthDataResult?) -> Void) {
+        Auth.auth().signIn(withEmail: email, password: password) { auth, error in
+            if error != nil {
+                completion(error,nil)
+            }
+            else {
+                completion(nil,auth)
+            }
+        }
+    }
+    
+    // MARK:- TODO:- This Method For Resete Password.
+    public func ForgetPassword(email: String, completion: @escaping (String) -> ()) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if error != nil {
+                completion(error!.localizedDescription)
+            }
+            else {
+                completion("Success")
+            }
+        }
+    }
+    
+    // MARK:- TODO:- This Method For Write Message into Firebase
     public func WriteMessageToFirebase<T: Codable> (collectionName: String ,ob: T, id : String) {
         
         do {

@@ -20,7 +20,6 @@ class LoginViewController: UIViewController {
     // ------------------------------------------------
     
     // MARK:- TODO:- This Section for Initialise new varibles.
-    let backgroundColor = "#586C62"
     let loginviewmodel = LoginViewModel()
     let disposebag = DisposeBag()
     // ------------------------------------------------
@@ -32,7 +31,10 @@ class LoginViewController: UIViewController {
         
         configureButton()
         configureLoginisEnabled()
+        SubscribeToLoginResponse()
         BindToLoginButtonAction()
+        
+        SubscribeToForgetPasswordResponse()
         BindToForgetPasswordButtonAction()
     }
     
@@ -46,7 +48,8 @@ class LoginViewController: UIViewController {
     
     // MARK:- TODO:- This Method For Confgiure Button UI.
     func configureButton() {
-        LoginButton.MakeCornerRadious(BackGroundColour: backgroundColor, BorderColour: backgroundColor)
+        LoginButton.MakeCornerRadious(BackGroundColour: buttonBackGround, BorderColour: buttonBorderColour)
+        LoginButton.layer.cornerRadius = LoginButton.frame.height / 2
     }
     // ------------------------------------------------
     
@@ -67,20 +70,76 @@ class LoginViewController: UIViewController {
     }
     // ------------------------------------------------
     
-    
-    // MARK:- TODO:- This Method For Make Action For Login Button.
-    func BindToLoginButtonAction() {
-        LoginButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { _ in
-            print("Login Button Action Tapped")
+    // MARK:- TODO:- This Method For Reponse Action For Loging operation.
+    func SubscribeToLoginResponse() {
+        loginviewmodel.reponseBehaviour.subscribe(onNext: { [weak self] response in
+            guard let self = self else { return }
+            
+            guard let response = response else { return }
+            
+            if response {
+                self.createAlert(Title: "Error", Mess: self.loginviewmodel.errorBehaviour.value)
+                self.LoginButton.isEnabled = true
+                self.passwordTextField.text = ""
+                self.passwordTextField.becomeFirstResponder()
+            }
+            else {
+                self.LoginButton.isEnabled = true
+                
+                let storyboard = UIStoryboard(name: "AddPlace", bundle: nil)
+                let addplace = storyboard.instantiateViewController(withIdentifier: "AddPlaceViewController") as! AddPlaceViewController
+                
+                addplace.modalPresentationStyle = .fullScreen
+                
+                self.present(addplace, animated: true)
+                
+            }
+            
         }).disposed(by: disposebag)
     }
     // ------------------------------------------------
     
     
+    // MARK:- TODO:- This Method For Make Action For Login Button.
+    func BindToLoginButtonAction() {
+        LoginButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.LoginButton.isEnabled = false
+            self.loginviewmodel.MakeLoginOperation()
+            
+        }).disposed(by: disposebag)
+    }
+    // ------------------------------------------------
+    
+    // MARK:- TODO:- This Method For Response For ForgetPasswrd.
+    func SubscribeToForgetPasswordResponse() {
+        loginviewmodel.forgetpasswordBehaviour.subscribe(onNext: { [weak self] forgetpassword in
+            
+            guard let self = self else { return }
+            guard let forgetpassword = forgetpassword else { return }
+            
+            if forgetpassword == "Success" {
+                self.createAlert(Title: "Success", Mess: "we send password verification")
+                self.forgetPasswordButton.isEnabled = true
+            }
+            else {
+                self.createAlert(Title: "Error", Mess: "We can\'t send an password verififcation")
+                self.forgetPasswordButton.isEnabled = true
+            }
+        }).disposed(by: disposebag)
+    }
+    
+    
     // MARK:- TODO:- This Method For Action For Forget Password Button.
     func BindToForgetPasswordButtonAction() {
-        forgetPasswordButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { _ in
-            print("Foget Password Button Action Tapped")
+        forgetPasswordButton.rx.tap.throttle(RxTimeInterval.milliseconds(500), scheduler: MainScheduler.instance).subscribe(onNext: { [weak self] _ in
+            
+            guard let self = self else { return }
+            
+            self.forgetPasswordButton.isEnabled = false
+            self.loginviewmodel.ResetePasswordOperation()
+            
         }).disposed(by: disposebag)
     }
     // ------------------------------------------------

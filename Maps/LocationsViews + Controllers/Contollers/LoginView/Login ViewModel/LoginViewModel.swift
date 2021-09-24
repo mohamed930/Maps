@@ -14,6 +14,11 @@ class LoginViewModel {
     // MARK:- TODO:- Make RxSwift Varibles.
     let emailBehaviour = BehaviorRelay<String>(value: "")
     let passwordBehaviour = BehaviorRelay<String>(value: "")
+    
+    let reponseBehaviour = BehaviorRelay<Bool?>(value: nil)
+    let errorBehaviour = BehaviorRelay<String>(value: "")
+    
+    let forgetpasswordBehaviour = BehaviorRelay<String?>(value: nil)
     // ------------------------------------------------
     
     
@@ -41,6 +46,41 @@ class LoginViewModel {
             let loginValid = !emailEmpty && !passwordEmpty
             
             return loginValid
+        }
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Loging operation.
+    func MakeLoginOperation() {
+        FirebaseLayer.shared.LoginOperation(email: emailBehaviour.value, password: passwordBehaviour.value) { error, auth in
+            
+            if error != nil {
+                self.reponseBehaviour.accept(true)
+                self.errorBehaviour.accept(error!.localizedDescription)
+            }
+            else {
+                self.reponseBehaviour.accept(false)
+            }
+            
+        }
+    }
+    // ------------------------------------------------
+    
+    
+    // MARK:- TODO:- This Method For Resete Password Operation.
+    func ResetePasswordOperation() {
+        FirebaseLayer.shared.ForgetPassword(email: emailBehaviour.value) { [weak self] resposnse in
+            
+            guard let self = self else { return }
+            
+            if resposnse == "Success" {
+                self.forgetpasswordBehaviour.accept("Success")
+            }
+            else {
+                self.forgetpasswordBehaviour.accept(resposnse)
+            }
+            
         }
     }
     // ------------------------------------------------

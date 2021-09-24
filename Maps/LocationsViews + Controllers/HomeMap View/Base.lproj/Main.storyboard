@@ -191,21 +191,22 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDy-2i-YIO">
-                                <rect key="frame" x="16" y="291" width="343" height="22"/>
+                                <rect key="frame" x="16" y="291" width="343" height="28"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="gR6-ks-xvA"/>
+                                    <constraint firstAttribute="height" constant="28" id="gR6-ks-xvA"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Forget password?"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4De-Or-pnU">
-                                <rect key="frame" x="16" y="411" width="343" height="70"/>
+                                <rect key="frame" x="16" y="417" width="343" height="70"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="7Uj-M3-P1S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" name="Buttoncolour"/>
                                 </state>
                             </button>
                         </subviews>
@@ -293,6 +294,9 @@
         <image name="Direction" width="30" height="30"/>
         <image name="Show" width="22" height="18"/>
         <image name="location.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="Buttoncolour">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
         <namedColor name="TextColour">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>

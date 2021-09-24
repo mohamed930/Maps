@@ -23,4 +23,11 @@ extension UIViewController {
         }
     }
     
+    func createAlert (Title:String , Mess:String) {
+        let alert = UIAlertController(title: Title , message:Mess
+            , preferredStyle:UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "ok" ,style:UIAlertAction.Style.default,handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
+        self.present(alert,animated:true,completion: nil)
+    }
+    
 }

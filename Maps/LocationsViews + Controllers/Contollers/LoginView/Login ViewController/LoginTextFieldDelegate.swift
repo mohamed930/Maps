@@ -15,8 +15,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
         else {
             self.view.endEditing(true)
-            
-            // Call Method Login
         }
         return true
     }
