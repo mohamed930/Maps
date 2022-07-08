@@ -87,7 +87,7 @@ class LoginViewController: UIViewController {
                 self.LoginButton.isEnabled = true
                 
                 let storyboard = UIStoryboard(name: "AddPlace", bundle: nil)
-                let addplace = storyboard.instantiateViewController(withIdentifier: "AddPlaceViewController") as! AddPlaceViewController
+                let addplace = storyboard.instantiateViewController(withIdentifier: "AddPlaceViewController")
                 
                 addplace.modalPresentationStyle = .fullScreen
                 

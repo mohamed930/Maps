@@ -56,6 +56,16 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     // MARK:- TODO:- Bind TextField To his rxSwift varibles.
     func bindTextFieldToRxSwift() {
         ShopNameTextField.rx.text.orEmpty.bind(to: addplaceviewmodel.ShopNameBehaviour).disposed(by: disposebag)
@@ -109,7 +119,7 @@ class AddPlaceViewController: UIViewController, UIImagePickerControllerDelegate 
                 
                 guard let self = self else { return }
                 
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let storyboard = UIStoryboard(name: "AddPlace", bundle: nil)
                 let nextvc = storyboard.instantiateViewController(withIdentifier: "PickedMapViewController") as! MapPickedViewController
                 nextvc.modalPresentationStyle = .fullScreen
                 
