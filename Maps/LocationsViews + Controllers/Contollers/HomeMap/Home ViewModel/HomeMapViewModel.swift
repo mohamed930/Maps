@@ -61,6 +61,7 @@ class HomeMapViewModel {
         camera = GMSCameraPosition.camera(withLatitude: lati, longitude: long , zoom: zoom)
         
         mapView = GMSMapView.map(withFrame: view.frame, camera: camera!)
+        mapView?.mapType = .satellite
         mapView?.delegate = delegate
         
         mapView!.frame = view.bounds
@@ -151,7 +152,7 @@ class HomeMapViewModel {
         }
         
         
-        
+        mapView?.mapType = .satellite
         mapView?.frame = view.bounds
         mapView!.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         view.addSubview(mapView!)
@@ -241,6 +242,7 @@ class HomeMapViewModel {
         let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
         mapView!.animate(with: update)
         
+        mapView?.mapType = .satellite
         mapView?.frame = view.bounds
         mapView!.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         view.addSubview(mapView!)

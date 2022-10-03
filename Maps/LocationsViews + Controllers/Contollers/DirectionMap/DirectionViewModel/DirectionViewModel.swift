@@ -24,6 +24,7 @@ class DirectionViewModel {
         anotation.coordinate = CLLocationCoordinate2D(latitude: lati, longitude: long)
         
         let range = MKCoordinateRegion(center: anotation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.mapType = .satellite
         mapView.setRegion(range, animated: true)
     }
     
@@ -76,6 +77,7 @@ class DirectionViewModel {
         anotation.title = Title
         anotation.subtitle = SubTitle
         let range = MKCoordinateRegion(center: anotation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        mapView.mapType = .satellite
         mapView.setRegion(range, animated: true)
         
     }
